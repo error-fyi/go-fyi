@@ -1,0 +1,24 @@
+[[env]]
+name = "GOROOT"
+value = ""
+
+[devshell]
+name = "develpment-shell"
+motd = """{106}Development Shell{reset}
+
+Commands:
+* lint: runs linter.
+* generate: alias for go generate.
+
+Use CTRL-D to leave the shell
+"""
+
+packages = [
+    "go_1_21",
+    "gotools",
+    "go-tools",
+    "golangci-lint",
+]
+
+startup.lint.text = "alias lint='golangci-lint run'"
+startup.generate.text = "alias generate='go generate ./...'"

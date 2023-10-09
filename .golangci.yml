@@ -1,0 +1,36 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters-settings:
+  goconst:
+    min-len: 10
+    min-occurrences: 10
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: github.com/error-fyi/go-fyi
+  golint:
+    min-confidence: 0
+  govet:
+    check-shadowing: true
+    enable-all: true
+
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - errcheck
+    - goconst
+    - gocritic
+    - gofmt
+    - gosimple
+    - ineffassign
+    - misspell
+    - nakedret
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unused
+    - whitespace
