@@ -183,5 +183,5 @@ func (l *Client) printMarkdownError(er api.Error) (string, error) {
 			}
 		}
 	}
-	return glamour.Render(content.String(), "dark"), nil
+	return glamour.Render(content.String(), "dark")
 }

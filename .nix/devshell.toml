@@ -9,6 +9,7 @@ motd = """{106}Development Shell{reset}
 Commands:
 * lint: runs linter.
 * generate: alias for go generate.
+* test: runs test.
 
 Use CTRL-D to leave the shell
 """
@@ -22,3 +23,4 @@ packages = [
 
 startup.lint.text = "alias lint='golangci-lint run'"
 startup.generate.text = "alias generate='go generate ./...'"
+startup.test.text = "alias test='go test ./...'"

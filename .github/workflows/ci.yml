@@ -19,7 +19,7 @@ jobs:
         run: diff -u <(echo -n) <(gofmt -d ./)
         shell: bash
       - name: Go Test
-        run: make test
+        run: go test ./...
   golangci:
     name: lint
     runs-on: ubuntu-latest
