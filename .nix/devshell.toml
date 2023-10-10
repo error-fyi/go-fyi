@@ -11,6 +11,8 @@ Commands:
 * generate: alias for go generate.
 * test: runs test.
 
+Remember to do a "go mod tidy" before pushing changes.
+
 Use CTRL-D to leave the shell
 """
 

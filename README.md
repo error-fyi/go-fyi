@@ -42,7 +42,13 @@
 
 ---
 
-# Usage
+> Warning:
+> The project is not production ready.
+
+## Usage
+
+> Note:
+> error.fyi CLI is required to generate the error.yaml from comments. Alternatively you can manually create your `error.yaml`.
 
 See [Get Started](https://docs.error.fyi/docs/intro) for more information on generating the `error.yaml`.
 
@@ -106,8 +112,30 @@ $ go run main.go
 exit status 1
 ```
 
-# Installation
+## Installation
 
 ```shell
 go get -u github.com/error-fyi/go-fyi
 ```
+
+## Development
+
+Development is entirely done using Nix [devshell](https://numtide.github.io/devshell), as such Nix should be present in the development machine.
+
+```shell
+$ source env-dev.sh
+$ develop
+```
+
+This will boot up a Nix devshell with the need tools and information.
+
+## Contributing
+
+Everyone is welcome to contribute to the project.
+
+Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md) for information on how to get started.
+
+Feedback is always appreciated, whether it's a bug or feature request, feel free to open an issue using one of the templates.
+
+## License
+MIT, see [LICENSE.md](./LICENSE).
