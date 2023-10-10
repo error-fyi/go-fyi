@@ -11,7 +11,7 @@
 
 <div align="center">
 
-[![GitHub release](https://img.shields.io/github/v/release/error-fyi/go-fyi?color=green&style=for-the-badge)](https://github.com/error-fyi/go-fyi/releases)
+[![GitHub tag](https://img.shields.io/github/v/tag/error-fyi/go-fyi?color=green&style=for-the-badge)](https://github.com/error-fyi/go-fyi/tags)
 [![Nix Devshell](https://img.shields.io/badge/nix-devshell-blue?logo=NixOS&style=for-the-badge)](https://github.com/error-fyi/go-fyi)
 [![Continuous Integration](https://img.shields.io/github/actions/workflow/status/tfadeyi/errors/ci.yml?branch=main&style=for-the-badge)](https://github.com/error-fyi/go-fyi/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg?style=for-the-badge)](https://github.com/tfadeyi/errors/blob/main/LICENSE)
@@ -44,6 +44,18 @@
 
 > **Warning**
 > The project is not production ready.
+
+## Motivation
+
+When developing a software application error messages tend to be an afterthought or forgotten all together, which in turn
+might make for a poor user experience when troubleshooting errors. **With error.fyi I hope to improve the story around error messaging
+and troubleshooting.**
+
+An error wrapped with `go-fyi` should always be able to answer the following:
+
+* **What caused the issue?**
+* **How they could solve the issue.**
+* **What to do to solve the issue.**
 
 ## Usage
 
