@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/glamour"
-	"github.com/error-fyi/go-fyi/internal/errorclient"
-	api "github.com/error-fyi/go-fyi/internal/types/v0.1.0"
+	"github.com/error-fyi/go-fyi/pkg/errorclient"
+	api "github.com/error-fyi/go-fyi/pkg/types/v0.1.0"
 	yaml "gopkg.in/yaml.v3"
 )
 

@@ -1,4 +1,4 @@
-//go:generate go run github.com/princjef/gomarkdoc/cmd/gomarkdoc --output "{{.Dir}}/README.md" -e
+//go:generate go run github.com/princjef/gomarkdoc/cmd/gomarkdoc ./pkg/... --output "{{.Dir}}/README.md" -e
 package errors
 
 import (
@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/error-fyi/go-fyi/internal/errorclient"
-	"github.com/error-fyi/go-fyi/internal/errorclient/local"
+	"github.com/error-fyi/go-fyi/pkg/errorclient"
+	"github.com/error-fyi/go-fyi/pkg/errorclient/local"
 )
 
 type (
