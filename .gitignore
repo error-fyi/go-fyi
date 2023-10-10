@@ -20,4 +20,4 @@
 # Go workspace file
 go.work
 
-internal/types/**/schema.json
+pkg/types/**/schema.json
