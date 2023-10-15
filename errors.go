@@ -136,12 +136,13 @@ func (w *Handler) ErrorWithContext(ctx context.Context, err error, code string, 
 		return err
 	}
 
+	currentOpts := w.Options
 	for _, opt := range opts {
-		opt(w.Options)
+		opt(currentOpts)
 	}
-	client := local.New(w.Options.ErrClientOptions)
+	client := local.New(currentOpts.ErrClientOptions)
 
-	if !w.Options.Silent {
+	if !currentOpts.Silent {
 		newErrMessage, genErr := client.GenerateErrorMessageFromCode(ctx, code)
 		if genErr != nil {
 			w.log(genErr.Error())
