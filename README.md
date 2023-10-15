@@ -18,6 +18,9 @@
 [![Language](https://img.shields.io/github/go-mod/go-version/error-fyi/go-fyi?style=for-the-badge)](https://github.com/error-fyi/go-fyi)
 [![Go Report Card](https://goreportcard.com/badge/github.com/error-fyi/go-fyi?style=for-the-badge)](https://goreportcard.com/report/github.com/error-fyi/go-fyi)
 
+<a href="https:/docs.error.fyi/fyi">
+    <img title="error.fyi" alt="Logo" src="docs/img/logo.png" width="280">
+</a>
 
 # go-fyi
 
@@ -45,7 +48,7 @@
 > **Warning**
 > The project is not production ready.
 
-## Motivation
+## Motivation ⭕
 
 When developing a software application error messages tend to be an afterthought or forgotten all together, which in turn
 might make for a poor user experience when troubleshooting errors. **With error.fyi I hope to improve the story around error messaging
@@ -57,7 +60,13 @@ An error wrapped with `go-fyi` should always be able to answer the following:
 * **How they could solve the issue.**
 * **What to do to solve the issue.**
 
-## Usage
+## Installation 📦
+
+```shell
+go get -u github.com/error-fyi/go-fyi
+```
+
+## Quickstart 🚀
 
 > **Note**
 > error.fyi CLI is required to generate the error.yaml from comments. Alternatively you can manually create your `error.yaml`.
@@ -154,10 +163,100 @@ version: v0.1.0
 
 </details>
 
-## Installation
+## Annotations
+
+Go-fyi uses in code annotations to add context to the errors returned to users.
+The list of all available annotations can be found [here](https://docs.error.fyi/docs/category/annotations).
+
+Annotations can be added manually next to the error in the code or automatically with the aid
+of [**fyictl**](https://docs.error.fyi/docs/cli/fyictl_annotate), which parses the code for errors and annotates them.
 
 ```shell
-go get -u github.com/error-fyi/go-fyi
+# annotates and wraps errors in the file.go
+fyictl annotate -f file.go --wrap
+```
+
+```shell
+# annotates and wraps errors in all the go packages under the current directory
+fyictl init --recursive --wrap
+```
+
+## Examples
+
+### Wrap error
+
+To wrap an error with go-fyi, pass the error as the first input and the code of the error as the second argument.
+
+>**Warning**
+> Make sure the code is the same as the in code annotation.
+
+```go
+package main
+import (
+	"errors"
+	fyi "github.com/error-fyi/go-fyi"
+)
+func doSomething() error {
+    // TODO improve this error message
+    err := errors.New("something went wrong, please try again")
+    // @fyi.error code main_error_18
+    // @fyi.error title Transaction Error
+    // @fyi.error short There was an error during transaction, value exceeded limit
+    // @fyi.error severity low
+    // @fyi.error.suggestion short Retry the transaction with a lower input value
+    return fyi.Error(err, "main_error_18")
+}
+```
+
+### Wrap error with options
+
+When wrapping errors with go-fyi, it's possible to customize how the target error will be displayed to the user.
+
+```go
+package main
+import (
+	"errors"
+	fyi "github.com/error-fyi/go-fyi"
+)
+func doSomething() error {
+    // TODO improve this error message
+    err := errors.New("something went wrong, please try again")
+    // @fyi.error code main_error_18
+    // @fyi.error title Transaction Error
+    // @fyi.error short There was an error during transaction, value exceeded limit
+    // @fyi.error severity low
+    // @fyi.error.suggestion short Retry the transaction with a lower input value
+    return fyi.Error(
+		err, "main_error_18",
+		fyi.WithDisplayErrorURL(false),
+		fyi.WithRenderMarkdown(false),
+		)
+}
+```
+
+### Global configuration
+
+It's possible to configure go-fyi different options at a global level.
+
+```go
+package main
+import (
+	_"embed"
+	fyi "github.com/error-fyi/go-fyi"
+)
+
+//go:embed errors.yaml
+var errorsYAML []byte
+
+// @fyi name example-app
+// @fyi title Example App
+// @fyi base_url docs.example.com
+// @fyi version v0.1.0
+func main() {
+	fyi.SetManifest(errorsYAML)
+	fyi.SetDisplayErrorURL(false)
+	fyi.SetSilence(true)
+}
 ```
 
 ## Development
